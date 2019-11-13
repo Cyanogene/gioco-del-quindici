@@ -30,51 +30,45 @@ class ViewController: UIViewController {
     }
     
      func generatore() {
-         let number = Int.random(in: 5 ... 26)
+         let number = Int.random(in: 10 ... 21)
          var x = 3
          var y = 3
       
         for _ in 0...number
-         {
-             var rand1 = Int.random(in: 1 ... 100)
-             var rand2 = Int.random(in: 1 ... 100)
+        {
+            var rand1 = Int.random(in: 1 ... 100)
+            var rand2 = Int.random(in: 1 ... 100)
       
-                 if (x==0)
-                 {
-                     matrice[x][y] = matrice[x + 1][y]
-                     x = x + 1;
-                     matrice[x][y] = 0;
-                 }
-      
-      
-                 if (y==0)
-                 {
-                     matrice[x][y] = matrice[x][y + 1]
-                     y = y + 1;
-                     matrice[x][y] = 0;
-                 }
+                if (x==0)
+                {
+                    matrice[x][y] = matrice[x + 1][y]
+                    x = x + 1;
+                    matrice[x][y] = 0;
+                }
       
       
-                 if (rand1 >= rand2 || rand1 % 2 == 0)
-                 {
-                     matrice[x][y] = matrice[x - 1][y]
-                     x = x - 1;
-                     matrice[x][y] = 0;
-                 }
+                if (y==0)
+                {
+                    matrice[x][y] = matrice[x][y + 1]
+                    y = y + 1;
+                    matrice[x][y] = 0;
+                }
+      
+      
+                if (rand1 >= rand2 || rand1 % 2 == 0)
+                {
+                    matrice[x][y] = matrice[x - 1][y]
+                    x = x - 1;
+                    matrice[x][y] = 0;
+                }
 
-            if (rand1 < rand2 || rand1 % 2 != 0)
-                 {
-                     matrice[x][y] = matrice[x][y - 1]
-                     y = y - 1;
-                     matrice[x][y] = 0;
-                 }
-         }
-     }
-      
-
-
-     
-     
-     
+                if (rand1 < rand2 || rand1 % 2 != 0)
+                {
+                    matrice[x][y] = matrice[x][y - 1]
+                    y = y - 1;
+                    matrice[x][y] = 0;
+                }
+        }
+    } 
 }
 
