@@ -79,9 +79,6 @@
                                 <rect key="frame" x="219" y="484" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="15"/>
-                                <connections>
-                                    <action selector="btn_14:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ol-NY-Akb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-eA-0x5">
                                 <rect key="frame" x="165" y="484" width="30" height="30"/>
@@ -92,13 +89,19 @@
                                 <rect key="frame" x="111" y="349" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="1"/>
-                                <connections>
-                                    <action selector="btn_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1wP-Pe-KU0"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Q2-d3-PpW">
                                 <rect key="frame" x="273" y="484" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzl-cw-evf">
+                                <rect key="frame" x="111" y="597" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Crea partita"/>
+                                <connections>
+                                    <action selector="btn_creaPartita:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhC-7e-5Kb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -106,8 +109,21 @@
                     </view>
                     <connections>
                         <outlet property="button1" destination="rme-of-SFj" id="0Zw-LF-hxM"/>
+                        <outlet property="button10" destination="NmX-c7-XQ1" id="2ul-5m-aAL"/>
+                        <outlet property="button11" destination="2JT-y2-F7B" id="52A-7A-DXG"/>
+                        <outlet property="button12" destination="HaT-49-DhD" id="8N2-gJ-fq1"/>
+                        <outlet property="button13" destination="9c5-fY-PJ5" id="ezC-BX-yH3"/>
+                        <outlet property="button14" destination="dD7-eA-0x5" id="F3L-GI-Gf3"/>
+                        <outlet property="button15" destination="Gsy-sL-fZg" id="1Ry-JA-C4i"/>
+                        <outlet property="button2" destination="5a1-VE-nxy" id="HqS-O7-UKa"/>
+                        <outlet property="button3" destination="nBd-Ou-3qR" id="3tR-Dd-thS"/>
+                        <outlet property="button4" destination="rax-nx-RFx" id="L2B-Vc-5Ng"/>
+                        <outlet property="button5" destination="84Q-yq-2nb" id="Hs9-Cl-iR9"/>
+                        <outlet property="button6" destination="Os7-hz-KoE" id="Nwo-fe-TNj"/>
+                        <outlet property="button7" destination="P7g-MN-2o2" id="QuJ-iH-mrt"/>
+                        <outlet property="button8" destination="zxU-Yr-aPu" id="Afj-Qg-Wzr"/>
+                        <outlet property="button9" destination="D3s-qp-mFQ" id="2GQ-d1-XUV"/>
                         <outlet property="buttonEmpty" destination="7Q2-d3-PpW" id="7p1-yT-nER"/>
-                        <outletCollection property="button" destination="5a1-VE-nxy" collectionClass="NSMutableArray" id="adO-ow-hVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
