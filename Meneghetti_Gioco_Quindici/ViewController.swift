@@ -57,6 +57,7 @@ class ViewController: UIViewController {
         
     }
     func generatore() {
+        Inizio();
          let number = Int.random(in: 10 ... 21)
          var x = 3
          var y = 3
@@ -96,6 +97,22 @@ class ViewController: UIViewController {
                     matrice[x][y] = 0;
                 }
         }
-    } 
+    }
+    
+    func Inizio(){
+        matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
+        var x = 0
+        var y = 0
+        
+        
+        for _ in 0...3 {
+            for _ in 0...3 {
+                matriceButtons[x][y].setTitle(String(matrice[x][y]), for: .normal)
+                y = y + 1
+            }
+            x = x + 1
+            y = 0
+        }
+    }
 }
 
