@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btn_creaPartita(_ sender: UIButton) {
+        for _ in 0...40{
         generatore()
         var x = 0
         var y = 0
@@ -54,12 +55,12 @@ class ViewController: UIViewController {
         }
  
         
-        
+        }
     }
     func generatore() {
         Inizio();
          let number = Int.random(in: 10 ... 21)
-         var x = 3
+        var x = matrice.index(0, offsetBy: Int) 
          var y = 3
       
         for _ in 0...number
