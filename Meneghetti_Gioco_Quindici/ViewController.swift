@@ -31,7 +31,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     var matrice : [[Int]] = [[]]
     var matriceButtons : [[UIButton]] = [[]]
     var arr : [Int] = []
-    let difficoltà = ["Medio","Difficile","Esperto"]
+    let difficoltà = ["Medio","Difficile","Esperto","Impossibile"]
     var scelta = ""
     
      override func viewDidLoad() {
@@ -61,9 +61,73 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         return difficoltà.count
     }
     
-    // Assegna ad una variabile la difficolà selezionata
+    // Assegna ad una variabile la difficoltà selezionata
     func pickerView(_ listaDifficoltà: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         scelta = difficoltà[row]
+    }
+    
+    @IBAction func btn_1(_ sender: UIButton) {
+        Controllo(x: 0, y: 0)
+    }
+    
+    @IBAction func btn_2(_ sender: UIButton) {
+        Controllo(x: 0, y: 1)
+    }
+    @IBAction func btn_3(_ sender: UIButton) {
+        Controllo(x: 0, y: 2)
+    }
+    
+    @IBAction func btn_4(_ sender: UIButton) {
+        Controllo(x: 0, y: 3)
+    }
+    
+    @IBAction func btn_5(_ sender: UIButton) {
+        Controllo(x: 1, y: 0)
+    }
+    
+    @IBAction func btn_6(_ sender: UIButton) {
+        Controllo(x: 1, y: 1)
+    }
+    
+    @IBAction func btn_7(_ sender: UIButton) {
+        Controllo(x: 1, y: 2)
+    }
+    
+    @IBAction func btn_8(_ sender: UIButton) {
+        Controllo(x: 1, y: 3)
+    }
+    
+    @IBAction func btn_9(_ sender: UIButton) {
+        Controllo(x: 2, y: 0)
+    }
+    
+    @IBAction func btn_10(_ sender: UIButton) {
+        Controllo(x: 2, y: 1)
+    }
+    
+    @IBAction func btn_11(_ sender: UIButton) {
+        Controllo(x: 2, y: 2)
+    }
+    
+    @IBAction func btn_12(_ sender: UIButton) {
+        Controllo(x: 2, y: 3)
+    }
+    
+    @IBAction func btn_13(_ sender: UIButton) {
+        Controllo(x: 3, y: 0)
+        
+    }
+    @IBAction func btn_14(_ sender: UIButton) {
+        Controllo(x: 3, y: 1)
+        
+    }
+    @IBAction func btn_15(_ sender: UIButton) {
+        Controllo(x: 3, y: 2)
+        
+    }
+    
+    @IBAction func btn_empty(_ sender: UIButton) {
+        Controllo(x: 3, y: 3)
     }
     
     @IBAction func btn_creaPartita(_ sender: UIButton)
@@ -100,9 +164,13 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             return 6
         }
-        else
+        else if ( scelta == "Esperto")
         {
             return 20
+        }
+        else
+        {
+            return 5000
         }
     }
     
@@ -121,6 +189,75 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             arr[x] = appoggio
             x = Int.random(in: 0...14)
             y = Int.random(in: 0...14)
+        }
+        
+        scombinaMatrice()
+    }
+    
+    func scombinaMatrice()
+    {
+        var x = 0
+        var y = 0
+        var i = 0
+
+        for _ in 0...3
+        {
+            for _ in 0...3
+            {
+                if ( x != 3 || y != 3)
+                {
+                    matrice[x][y] = arr[i]
+                    y = y + 1
+                    i = i + 1
+                }
+            }
+            x = x + 1
+            y = 0
+        }
+    }
+            
+    
+    func Controllo(x : Int, y : Int)
+    {
+        if (x + 1 <= 3 && matrice[x + 1][y] == 0)
+        {
+            matrice[x+1][y] = matrice[x][y]
+            matrice[x][y] = 0
+            
+            matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
+            matriceButtons[x+1][y].setTitle(String(matrice[x+1][y]),for: .normal)
+            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
+            matriceButtons[x+1][y].setTitleColor(UIColor.black, for: .normal)
+        }
+        if (x - 1 >= 0 && matrice[x - 1][y] == 0)
+        {
+            matrice[x-1][y] = matrice[x][y]
+            matrice[x][y] = 0
+            
+            matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
+            matriceButtons[x-1][y].setTitle(String(matrice[x-1][y]),for: .normal)
+            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
+            matriceButtons[x-1][y].setTitleColor(UIColor.black, for: .normal)
+        }
+        if (y + 1 <= 3 && matrice[x][y + 1] == 0)
+        {
+            matrice[x][y+1] = matrice[x][y]
+            matrice[x][y] = 0
+            
+            matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
+            matriceButtons[x][y+1].setTitle(String(matrice[x][y+1]),for: .normal)
+            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
+            matriceButtons[x][y+1].setTitleColor(UIColor.black, for: .normal)
+        }
+        if (y - 1 >= 0 && matrice[x][y - 1] == 0)
+        {
+            matrice[x][y-1] = matrice[x][y]
+            matrice[x][y] = 0
+            
+            matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
+            matriceButtons[x][y-1].setTitle(String(matrice[x][y-1]),for: .normal)
+            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
+            matriceButtons[x][y-1].setTitleColor(UIColor.black, for: .normal)
         }
     }
     /*
