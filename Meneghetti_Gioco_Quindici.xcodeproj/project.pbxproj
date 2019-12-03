@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06269082239076C000F0BD33 /* Animazioni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06269081239076C000F0BD33 /* Animazioni.swift */; };
 		3F80C2E823603B5E00E1F1F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C2E723603B5E00E1F1F9 /* AppDelegate.swift */; };
 		3F80C2EA23603B5E00E1F1F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C2E923603B5E00E1F1F9 /* SceneDelegate.swift */; };
 		3F80C2EC23603B5E00E1F1F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C2EB23603B5E00E1F1F9 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06269081239076C000F0BD33 /* Animazioni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animazioni.swift; sourceTree = "<group>"; };
 		3F80C2E423603B5E00E1F1F9 /* Meneghetti_Gioco_Quindici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meneghetti_Gioco_Quindici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F80C2E723603B5E00E1F1F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F80C2E923603B5E00E1F1F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				3F80C2F023603B6000E1F1F9 /* Assets.xcassets */,
 				3F80C2F223603B6000E1F1F9 /* LaunchScreen.storyboard */,
 				3F80C2F523603B6000E1F1F9 /* Info.plist */,
+				06269081239076C000F0BD33 /* Animazioni.swift */,
 			);
 			path = Meneghetti_Gioco_Quindici;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				3F80C2EC23603B5E00E1F1F9 /* ViewController.swift in Sources */,
 				3F80C2E823603B5E00E1F1F9 /* AppDelegate.swift in Sources */,
+				06269082239076C000F0BD33 /* Animazioni.swift in Sources */,
 				3F80C2EA23603B5E00E1F1F9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

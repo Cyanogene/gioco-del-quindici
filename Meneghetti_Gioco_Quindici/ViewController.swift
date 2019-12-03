@@ -27,9 +27,12 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var button15: UIButton!
     @IBOutlet weak var buttonEmpty: UIButton!
     @IBOutlet weak var listaDifficoltà: UIPickerView!
+    @IBOutlet weak var lbl_vittoria: UILabel!
+    @IBOutlet var label_test: UILabel!
     
     var matrice : [[Int]] = [[]]
     var matriceButtons : [[UIButton]] = [[]]
+    var matriceImmagini : [[UIImage]] = [[]]
     var arr : [Int] = []
     let difficoltà = ["Medio","Difficile","Esperto","Impossibile"]
     var scelta = ""
@@ -40,8 +43,11 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
         matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
         arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!],[UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!]]
         listaDifficoltà.dataSource = self
         listaDifficoltà.delegate = self
+        buttonEmpty.setTitleColor(UIColor.white, for: .normal)
+        BloccaButton()
     }
     
     // Numero di colonne della PickerView (in questo caso una)
@@ -68,69 +74,101 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func btn_1(_ sender: UIButton) {
         Controllo(x: 0, y: 0)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_2(_ sender: UIButton) {
         Controllo(x: 0, y: 1)
+        sender.pulsate()
+        Vittoria()
     }
     @IBAction func btn_3(_ sender: UIButton) {
         Controllo(x: 0, y: 2)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_4(_ sender: UIButton) {
         Controllo(x: 0, y: 3)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_5(_ sender: UIButton) {
         Controllo(x: 1, y: 0)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_6(_ sender: UIButton) {
         Controllo(x: 1, y: 1)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_7(_ sender: UIButton) {
         Controllo(x: 1, y: 2)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_8(_ sender: UIButton) {
         Controllo(x: 1, y: 3)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_9(_ sender: UIButton) {
         Controllo(x: 2, y: 0)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_10(_ sender: UIButton) {
         Controllo(x: 2, y: 1)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_11(_ sender: UIButton) {
         Controllo(x: 2, y: 2)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_12(_ sender: UIButton) {
         Controllo(x: 2, y: 3)
+        sender.pulsate()
+        Vittoria()
     }
     
     @IBAction func btn_13(_ sender: UIButton) {
         Controllo(x: 3, y: 0)
+        sender.pulsate()
+        Vittoria()
         
     }
     @IBAction func btn_14(_ sender: UIButton) {
         Controllo(x: 3, y: 1)
+        sender.pulsate()
+        Vittoria()
         
     }
     @IBAction func btn_15(_ sender: UIButton) {
         Controllo(x: 3, y: 2)
+        sender.pulsate()
+        Vittoria()
         
     }
     
     @IBAction func btn_empty(_ sender: UIButton) {
         Controllo(x: 3, y: 3)
+        sender.pulsate()
+        Vittoria()
     }
     
-    @IBAction func btn_creaPartita(_ sender: UIButton)
+    @IBAction func btn_creaPartita(_ sender: Any)
     {
         creaPartita()
         var x = 0
@@ -151,6 +189,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             x = x + 1
             y = 0
         }
+        SbloccaButton()
     }
     
     // Matematicamente più mescolo l'array più il quadrato di gioco è difficile. Restituisco un numero che varia in base alla difficoltà
@@ -158,19 +197,19 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     {
         if ( scelta == "Medio")
         {
-            return 2
+            return 1
         }
         else if ( scelta == "Difficile")
         {
-            return 6
+            return 5
         }
         else if ( scelta == "Esperto")
         {
-            return 20
+            return 19
         }
         else
         {
-            return 5000
+            return 5001
         }
     }
     
@@ -215,7 +254,6 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             y = 0
         }
     }
-            
     
     func Controllo(x : Int, y : Int)
     {
@@ -229,6 +267,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
             matriceButtons[x+1][y].setTitleColor(UIColor.black, for: .normal)
         }
+        
         if (x - 1 >= 0 && matrice[x - 1][y] == 0)
         {
             matrice[x-1][y] = matrice[x][y]
@@ -239,6 +278,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
             matriceButtons[x-1][y].setTitleColor(UIColor.black, for: .normal)
         }
+        
         if (y + 1 <= 3 && matrice[x][y + 1] == 0)
         {
             matrice[x][y+1] = matrice[x][y]
@@ -249,6 +289,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
             matriceButtons[x][y+1].setTitleColor(UIColor.black, for: .normal)
         }
+        
         if (y - 1 >= 0 && matrice[x][y - 1] == 0)
         {
             matrice[x][y-1] = matrice[x][y]
@@ -259,6 +300,76 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
             matriceButtons[x][y-1].setTitleColor(UIColor.black, for: .normal)
         }
+    }
+    
+    func Vittoria()
+    {
+        if (ControlloOrdine())
+        {
+            BloccaButton()
+
+        }
+    }
+    
+    func BloccaButton()
+    {
+        var x = 0
+        var y = 0
+        for _ in 0...3
+        {
+            for _ in 0...3
+            {
+                matriceButtons[x][y].isEnabled = false
+                y = y + 1
+            }
+            
+            x = x + 1
+            y = 0
+        }
+    }
+    
+    func SbloccaButton()
+    {
+        var x = 0
+        var y = 0
+        for _ in 0...3
+        {
+            for _ in 0...3
+            {
+                matriceButtons[x][y].isEnabled = true
+                y = y + 1
+            }
+            
+            x = x + 1
+            y = 0
+        }
+    }
+    
+    func ControlloOrdine() -> Bool
+    {
+        var x = 0
+        var y = 0
+        var i = 1
+        for _ in 0...3
+        {
+            for _ in 0...3
+            {
+                if ( x != 3 || y != 3)
+                {
+                    if (matrice[x][y] != i)
+                    {
+                        return false
+                    }
+                    
+                    y = y + 1
+                    i = i + 1
+                }
+            }
+            
+            x = x + 1
+            y = 0
+        }
+        return true
     }
     /*
     func generatore() {
@@ -324,5 +435,6 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     */
-}
 
+
+}
