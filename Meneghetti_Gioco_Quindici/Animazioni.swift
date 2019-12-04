@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 extension UIButton {
-
+// Animazione di "tremolio"
     func shake() {
         
         let shake = CABasicAnimation(keyPath: "position")

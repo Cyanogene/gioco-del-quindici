@@ -41,11 +41,11 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
      override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        reset()
+        Reset()
         listaDifficoltà.dataSource = self
         listaDifficoltà.delegate = self
         listaDifficoltà.setValue(UIColor.white, forKey: "textColor")
-        BloccaButton()
+        BloccaPulsanti()
     }
     
     // Numero di colonne della PickerView (in questo caso una)
@@ -248,36 +248,33 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func btn_creaPartita(_ sender: UIButton)
     {
-        creaPartita()
+        CreaPartita()
         var x = 0
         var y = 0
         var i = 0
-        
         for _ in 0...3
         {
             for _ in 0...3
             {
-                
-                    matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
-                    matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
-                    y = y + 1
-                    i = i + 1
-                
+                matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
+                matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+                y = y + 1
+                i = i + 1
             }
             x = x + 1
             y = 0
         }
-        SbloccaButton()
+        
+        SbloccaPulsanti()
         lbl_vittoria.text = ""
     }
     
-    // Matematicamente più mescolo l'array più il quadrato di gioco è difficile. Restituisco un numero che varia in base alla difficoltà
-    func selezionaDifficoltà() -> Int
+    // Matematicamente più mescolo l'array più la griglia di gioco è difficile da risolvere. Restituisco una serie di permutazioni che varia in base alla difficoltà
+    func SelezionaDifficoltà() -> Int
     {
-        
         if ( scelta == "Difficile")
         {
-            return 8
+            return 6
         }
         else if ( scelta == "Esperto")
         {
@@ -293,34 +290,18 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
-    func reset()
-    {
-        matrice.removeAll()
-        matriceButtons.removeAll()
-        arr.removeAll()
-        matriceImmagini.removeAll()
-        arrImg.removeAll()
-        
-        matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
-        matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
-        arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]
-        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!],
-        [UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!],
-        [UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!],
-        [UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]]
-        arrImg = [UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!,UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!,UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!,UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]
-    }
+    
     // Scombina l'array per creare un quadrato di gioco risolvibile
-    func creaPartita()
+    func CreaPartita()
     {
-        reset()
-        var x = 3
-        var y = 3
-
+        Reset()
+        var x = Int.random(in: 0...14)
+        var y = Int.random(in: 0...14)
         var appoggio = 0
         var appoggioImg : UIImage
+        
         // Un quadrato è risolvibile se il numero di permutazioni eseguite è pari
-        for _ in 0...selezionaDifficoltà()
+        for _ in 0...SelezionaDifficoltà()
         {
             appoggio = arr[y]
             arr[y] = arr[x]
@@ -333,32 +314,30 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             x = Int.random(in: 0...14)
             y = Int.random(in: 0...14)
         }
-        
-        scombinaMatrice()
+        ScombinaMatrice()
     }
 
-    func scombinaMatrice()
+    // Aggiunge gli elementi dell'array scombinato in una matrice
+    func ScombinaMatrice()
     {
         var x = 0
         var y = 0
         var i = 0
-        
         for _ in 0...3
         {
             for _ in 0...3
             {
-                
-                    matrice[x][y] = arr[i]
-                    matriceImmagini[x][y] = arrImg[i]
-                    y = y + 1
-                    i = i + 1
-                
+                matrice[x][y] = arr[i]
+                matriceImmagini[x][y] = arrImg[i]
+                y = y + 1
+                i = i + 1
             }
             x = x + 1
             y = 0
         }
     }
     
+    // Data la posizione del pulsante (X,Y) ritorna TRUE se il pulsante si può spostare su una casella vuota, FALSE se non può
     func Controllo(x : Int, y : Int) -> Bool
     {
         var appoggio : UIImage
@@ -366,6 +345,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             matrice[x+1][y] = matrice[x][y]
             matrice[x][y] = 0
+            
             appoggio = matriceImmagini[x+1][y]
             matriceImmagini[x+1][y] = matriceImmagini[x][y]
             matriceImmagini[x][y] = appoggio
@@ -382,6 +362,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             matrice[x-1][y] = matrice[x][y]
             matrice[x][y] = 0
+            
             appoggio = matriceImmagini[x-1][y]
             matriceImmagini[x-1][y] = matriceImmagini[x][y]
             matriceImmagini[x][y] = appoggio
@@ -398,6 +379,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             matrice[x][y+1] = matrice[x][y]
             matrice[x][y] = 0
+            
             appoggio = matriceImmagini[x][y+1]
             matriceImmagini[x][y+1] = matriceImmagini[x][y]
             matriceImmagini[x][y] = appoggio
@@ -414,10 +396,11 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             matrice[x][y-1] = matrice[x][y]
             matrice[x][y] = 0
+            
             appoggio = matriceImmagini[x][y-1]
             matriceImmagini[x][y-1] = matriceImmagini[x][y]
             matriceImmagini[x][y] = appoggio
-            
+
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x][y-1].setTitle(String(matrice[x][y-1]),for: .normal)
 
@@ -427,17 +410,18 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         }
         return false
     }
-    
+
     func Vittoria()
     {
         if (ControlloOrdine())
         {
-            BloccaButton()
+            BloccaPulsanti()
             lbl_vittoria.text = "HAI VINTO!"
         }
     }
     
-    func BloccaButton()
+    // Blocca tutti i pulsanti
+    func BloccaPulsanti()
     {
         var x = 0
         var y = 0
@@ -448,13 +432,13 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
                 matriceButtons[x][y].isEnabled = false
                 y = y + 1
             }
-            
             x = x + 1
             y = 0
         }
     }
     
-    func SbloccaButton()
+    // Sblocca tutti i pulsanti
+    func SbloccaPulsanti()
     {
         var x = 0
         var y = 0
@@ -465,12 +449,12 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
                 matriceButtons[x][y].isEnabled = true
                 y = y + 1
             }
-            
             x = x + 1
             y = 0
         }
     }
     
+    // Controlla se la griglia è in ordine
     func ControlloOrdine() -> Bool
     {
         var x = 0
@@ -489,78 +473,23 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
                 }
                     y = y + 1
                     i = i + 1
-                
             }
-            
             x = x + 1
             y = 0
         }
         return true
     }
-    /*
-    func generatore() {
-        let number = Int.random(in: 10 ... 21)
-        var x = 0
-        var y = 0
-        
-        var finito = false
-        
-        while(!finito){
-            
-            if(matrice[x][y] == 0){
-                finito = true
-            }
-            else{
-                y = y + 1
-            }
-            if ( y == 4){
-                y = 0
-                x = x + 1
-            }
-            
-        }
-        
-        for _ in 0...number
-        {
-            var rand1 = Int.random(in: 1 ... 100)
-            var rand2 = Int.random(in: 1 ... 100)
-      
-                if (x==0)
-                {
-                    for _ in 0...2{
-                    matrice[x][y] = matrice[x + 1][y]
-                    x = x + 1;
-                    matrice[x][y] = 0;
-                    }
-                }
-      
-      
-                if (y==0)
-                {
-                    for _ in 0...2{
-                    matrice[x][y] = matrice[x][y + 1]
-                    y = y + 1;
-                    matrice[x][y] = 0;
-                    }
-                }
-      
-      
-                if (rand1 >= rand2 || rand1 % 2 == 0)
-                {
-                    matrice[x][y] = matrice[x - 1][y]
-                    x = x - 1;
-                    matrice[x][y] = 0;
-                }
-
-                else
-                {
-                    matrice[x][y] = matrice[x][y - 1]
-                    y = y - 1;
-                    matrice[x][y] = 0;
-                }
-        }
+    
+    // Svuota e riempie tutte le matrici / array alla situazione iniziale
+    func Reset()
+    {
+        matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
+        matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
+        arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]
+        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!],
+        [UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!],
+        [UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!],
+        [UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]]
+        arrImg = [UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!,UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!,UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!,UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]
     }
-    */
-
-
 }
