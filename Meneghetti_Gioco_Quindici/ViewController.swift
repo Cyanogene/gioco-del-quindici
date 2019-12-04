@@ -33,6 +33,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     var matrice : [[Int]] = [[]]
     var matriceButtons : [[UIButton]] = [[]]
     var matriceImmagini : [[UIImage]] = [[]]
+    var arrImg : [UIImage] = []
     var arr : [Int] = []
     let difficoltà = ["Medio","Difficile","Esperto","Impossibile"]
     var scelta = ""
@@ -43,7 +44,13 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
         matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
         arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!],[UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!,UIImage(named: "1.png")!]]
+        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!],
+        [UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!],
+        [UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!],
+        [UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "blank.png")!]]
+        arrImg = [UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!,UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!,UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!,UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "blank.png")!]
+        
+        
         listaDifficoltà.dataSource = self
         listaDifficoltà.delegate = self
         buttonEmpty.setTitleColor(UIColor.white, for: .normal)
@@ -168,7 +175,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         Vittoria()
     }
     
-    @IBAction func btn_creaPartita(_ sender: Any)
+    @IBAction func btn_creaPartita(_ sender: UIButton)
     {
         creaPartita()
         var x = 0
@@ -182,6 +189,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
                 if ( x != 3 || y != 3)
                 {
                     matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
+                    matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
                     y = y + 1
                     i = i + 1
                 }
@@ -218,14 +226,20 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     {
         var x = Int.random(in: 0...14)
         var y = Int.random(in: 0...14)
+
         var appoggio = 0
-        
+        var appoggioImg : UIImage
         // Un quadrato è risolvibile se il numero di permutazioni eseguite è pari
         for _ in 0...selezionaDifficoltà()
         {
             appoggio = arr[y]
             arr[y] = arr[x]
             arr[x] = appoggio
+            
+            appoggioImg = arrImg[y]
+            arrImg[y] = arrImg[x]
+            arrImg[x] = appoggioImg
+            
             x = Int.random(in: 0...14)
             y = Int.random(in: 0...14)
         }
@@ -238,7 +252,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         var x = 0
         var y = 0
         var i = 0
-
+        
         for _ in 0...3
         {
             for _ in 0...3
@@ -246,6 +260,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
                 if ( x != 3 || y != 3)
                 {
                     matrice[x][y] = arr[i]
+                    matriceImmagini[x][y] = arrImg[i]
                     y = y + 1
                     i = i + 1
                 }
@@ -264,8 +279,10 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
             
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x+1][y].setTitle(String(matrice[x+1][y]),for: .normal)
-            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
-            matriceButtons[x+1][y].setTitleColor(UIColor.black, for: .normal)
+            
+            matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+            matriceButtons[x+1][y].setImage(matriceImmagini[x+1][y], for: .normal)
+
         }
         
         if (x - 1 >= 0 && matrice[x - 1][y] == 0)
