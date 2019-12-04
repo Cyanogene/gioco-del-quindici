@@ -41,19 +41,10 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
      override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
-        matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
-        arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!],
-        [UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!],
-        [UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!],
-        [UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "blank.png")!]]
-        arrImg = [UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!,UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!,UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!,UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "blank.png")!]
-        
-        
+        reset()
         listaDifficoltà.dataSource = self
         listaDifficoltà.delegate = self
-        buttonEmpty.setTitleColor(UIColor.white, for: .normal)
+        listaDifficoltà.setValue(UIColor.white, forKey: "textColor")
         BloccaButton()
     }
     
@@ -80,99 +71,179 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     @IBAction func btn_1(_ sender: UIButton) {
-        Controllo(x: 0, y: 0)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 0, y: 0))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_2(_ sender: UIButton) {
-        Controllo(x: 0, y: 1)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 0, y: 1))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     @IBAction func btn_3(_ sender: UIButton) {
-        Controllo(x: 0, y: 2)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 0, y: 2))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_4(_ sender: UIButton) {
-        Controllo(x: 0, y: 3)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 0, y: 3))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_5(_ sender: UIButton) {
-        Controllo(x: 1, y: 0)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 1, y: 0))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_6(_ sender: UIButton) {
-        Controllo(x: 1, y: 1)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 1, y: 1))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_7(_ sender: UIButton) {
-        Controllo(x: 1, y: 2)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 1, y: 2))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_8(_ sender: UIButton) {
-        Controllo(x: 1, y: 3)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 1, y: 3))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_9(_ sender: UIButton) {
-        Controllo(x: 2, y: 0)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 2, y: 0))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_10(_ sender: UIButton) {
-        Controllo(x: 2, y: 1)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 2, y: 1))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_11(_ sender: UIButton) {
-        Controllo(x: 2, y: 2)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 2, y: 2))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_12(_ sender: UIButton) {
-        Controllo(x: 2, y: 3)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 2, y: 3))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_13(_ sender: UIButton) {
-        Controllo(x: 3, y: 0)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 3, y: 0))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
         
     }
     @IBAction func btn_14(_ sender: UIButton) {
-        Controllo(x: 3, y: 1)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 3, y: 1))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
         
     }
     @IBAction func btn_15(_ sender: UIButton) {
-        Controllo(x: 3, y: 2)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 3, y: 2))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
         
     }
     
     @IBAction func btn_empty(_ sender: UIButton) {
-        Controllo(x: 3, y: 3)
-        sender.pulsate()
-        Vittoria()
+        if(Controllo(x: 3, y: 3))
+        {
+            Vittoria()
+        }
+        else
+        {
+            sender.shake()
+        }
     }
     
     @IBAction func btn_creaPartita(_ sender: UIButton)
@@ -186,46 +257,65 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             for _ in 0...3
             {
-                if ( x != 3 || y != 3)
-                {
+                
                     matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
                     matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
                     y = y + 1
                     i = i + 1
-                }
+                
             }
             x = x + 1
             y = 0
         }
         SbloccaButton()
+        lbl_vittoria.text = ""
     }
     
     // Matematicamente più mescolo l'array più il quadrato di gioco è difficile. Restituisco un numero che varia in base alla difficoltà
     func selezionaDifficoltà() -> Int
     {
-        if ( scelta == "Medio")
+        
+        if ( scelta == "Difficile")
         {
-            return 1
-        }
-        else if ( scelta == "Difficile")
-        {
-            return 5
+            return 8
         }
         else if ( scelta == "Esperto")
         {
-            return 19
+            return 10
+        }
+        else if ( scelta == "Impossibile")
+        {
+            return 5000
         }
         else
         {
-            return 5001
+            return 2
         }
     }
     
+    func reset()
+    {
+        matrice.removeAll()
+        matriceButtons.removeAll()
+        arr.removeAll()
+        matriceImmagini.removeAll()
+        arrImg.removeAll()
+        
+        matrice = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]
+        matriceButtons = [[button1,button2,button3,button4],[button5,button6,button7,button8],[button9,button10,button11,button12],[button13,button14,button15,buttonEmpty]]
+        arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]
+        matriceImmagini = [[UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!],
+        [UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!],
+        [UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!],
+        [UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]]
+        arrImg = [UIImage(named: "1.png")!,UIImage(named: "2.png")!,UIImage(named: "3.png")!,UIImage(named: "4.png")!,UIImage(named: "5.png")!,UIImage(named: "6.png")!,UIImage(named: "7.png")!,UIImage(named: "8.png")!,UIImage(named: "9.png")!,UIImage(named: "10.png")!,UIImage(named: "11.png")!,UIImage(named: "12.png")!,UIImage(named: "13.png")!,UIImage(named: "14.png")!,UIImage(named: "15.png")!,UIImage(named: "sfondo.png")!]
+    }
     // Scombina l'array per creare un quadrato di gioco risolvibile
     func creaPartita()
     {
-        var x = Int.random(in: 0...14)
-        var y = Int.random(in: 0...14)
+        reset()
+        var x = 3
+        var y = 3
 
         var appoggio = 0
         var appoggioImg : UIImage
@@ -246,7 +336,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         
         scombinaMatrice()
     }
-    
+
     func scombinaMatrice()
     {
         var x = 0
@@ -257,66 +347,85 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             for _ in 0...3
             {
-                if ( x != 3 || y != 3)
-                {
+                
                     matrice[x][y] = arr[i]
                     matriceImmagini[x][y] = arrImg[i]
                     y = y + 1
                     i = i + 1
-                }
+                
             }
             x = x + 1
             y = 0
         }
     }
     
-    func Controllo(x : Int, y : Int)
+    func Controllo(x : Int, y : Int) -> Bool
     {
+        var appoggio : UIImage
         if (x + 1 <= 3 && matrice[x + 1][y] == 0)
         {
             matrice[x+1][y] = matrice[x][y]
             matrice[x][y] = 0
+            appoggio = matriceImmagini[x+1][y]
+            matriceImmagini[x+1][y] = matriceImmagini[x][y]
+            matriceImmagini[x][y] = appoggio
             
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x+1][y].setTitle(String(matrice[x+1][y]),for: .normal)
             
             matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
             matriceButtons[x+1][y].setImage(matriceImmagini[x+1][y], for: .normal)
-
+            return true
         }
         
         if (x - 1 >= 0 && matrice[x - 1][y] == 0)
         {
             matrice[x-1][y] = matrice[x][y]
             matrice[x][y] = 0
+            appoggio = matriceImmagini[x-1][y]
+            matriceImmagini[x-1][y] = matriceImmagini[x][y]
+            matriceImmagini[x][y] = appoggio
             
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x-1][y].setTitle(String(matrice[x-1][y]),for: .normal)
-            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
-            matriceButtons[x-1][y].setTitleColor(UIColor.black, for: .normal)
+            
+            matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+            matriceButtons[x-1][y].setImage(matriceImmagini[x-1][y], for: .normal)
+            return true
         }
         
         if (y + 1 <= 3 && matrice[x][y + 1] == 0)
         {
             matrice[x][y+1] = matrice[x][y]
             matrice[x][y] = 0
+            appoggio = matriceImmagini[x][y+1]
+            matriceImmagini[x][y+1] = matriceImmagini[x][y]
+            matriceImmagini[x][y] = appoggio
             
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x][y+1].setTitle(String(matrice[x][y+1]),for: .normal)
-            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
-            matriceButtons[x][y+1].setTitleColor(UIColor.black, for: .normal)
+
+            matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+            matriceButtons[x][y+1].setImage(matriceImmagini[x][y+1], for: .normal)
+            return true
         }
         
         if (y - 1 >= 0 && matrice[x][y - 1] == 0)
         {
             matrice[x][y-1] = matrice[x][y]
             matrice[x][y] = 0
+            appoggio = matriceImmagini[x][y-1]
+            matriceImmagini[x][y-1] = matriceImmagini[x][y]
+            matriceImmagini[x][y] = appoggio
             
             matriceButtons[x][y].setTitle(String(matrice[x][y]),for: .normal)
             matriceButtons[x][y-1].setTitle(String(matrice[x][y-1]),for: .normal)
-            matriceButtons[x][y].setTitleColor(UIColor.white, for: .normal)
-            matriceButtons[x][y-1].setTitleColor(UIColor.black, for: .normal)
+
+            matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+            matriceButtons[x][y-1].setImage(matriceImmagini[x][y-1], for: .normal)
+            return true
         }
+        return false
     }
     
     func Vittoria()
@@ -324,7 +433,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         if (ControlloOrdine())
         {
             BloccaButton()
-
+            lbl_vittoria.text = "HAI VINTO!"
         }
     }
     
@@ -371,16 +480,16 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             for _ in 0...3
             {
-                if ( x != 3 || y != 3)
+                if (x != 3 || y != 3)
                 {
                     if (matrice[x][y] != i)
                     {
                         return false
                     }
-                    
+                }
                     y = y + 1
                     i = i + 1
-                }
+                
             }
             
             x = x + 1
