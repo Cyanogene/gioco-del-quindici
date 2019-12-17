@@ -256,8 +256,8 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         {
             for _ in 0...3
             {
-                matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
-                matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
+            matriceButtons[x][y].setTitle(String(arr[i]), for: .normal)
+            matriceButtons[x][y].setImage(matriceImmagini[x][y], for: .normal)
                 y = y + 1
                 i = i + 1
             }
@@ -274,19 +274,19 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     {
         if ( scelta == "Difficile")
         {
-            return 6
+            return 7
         }
         else if ( scelta == "Esperto")
         {
-            return 10
+            return 11
         }
         else if ( scelta == "Impossibile")
         {
-            return 5000
+            return 5001
         }
         else
         {
-            return 2
+            return 3
         }
     }
     
@@ -297,6 +297,10 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         Reset()
         var x = Int.random(in: 0...14)
         var y = Int.random(in: 0...14)
+        while (x == y)  // Lo scambio deve avvenire, perciò x deve essere diverso da y
+        {
+            y = Int.random(in: 0...14)
+        }
         var appoggio = 0
         var appoggioImg : UIImage
         
